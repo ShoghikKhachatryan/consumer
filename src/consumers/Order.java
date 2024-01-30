@@ -4,29 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-private List<String> items;
+
+private final List<Item> items;
+
 private  double totalPrice;
 
   public Order() {
-    this.items = new ArrayList<String>();
+    this.items = new ArrayList<>();
     this.totalPrice = 0.0;
   }
 
-  public  void addItem(String item, double price){
+  public  void addItem(Item item){
     items.add(item);
-    totalPrice += price;
+    totalPrice += item.price();
   }
 
-
-  public void applyDiscount(double discount){
-    totalPrice -= discount;
+  public void applyDiscount(Coupon coupon){
+    totalPrice -= coupon.discount();
   }
 
-  public List<String> getItems() {
-    return items;
-  }
-
-  public double getTotalPrice() {
+  public double totalPrice() {
     return totalPrice;
   }
 }
